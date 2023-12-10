@@ -24,6 +24,10 @@ class EssayController extends Controller
 
         $score = json_decode((string) $response->getBody(), true);
 
-        return view('frontend.essay.result', ['score' => $score['score']]);
+        return view('frontend.essay.result', [
+            'score' => $score['score'],
+            'student_answer' => $request->student_answer,
+            'key_answer' => $request->key_answer
+        ]);
     }
 }

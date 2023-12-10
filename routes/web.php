@@ -15,7 +15,7 @@ use App\Http\Controllers\EssayController;
 
 Route::get('/', function () {
     return view('frontend.home');
-});
+})->name('home');
 
 Route::get('/essay', [EssayController::class, 'index'])->name('essay.index');
 Route::post('/essay/score', [EssayController::class, 'score'])->name('essay.score');

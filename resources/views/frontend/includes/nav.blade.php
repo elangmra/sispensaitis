@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
             <img id="SISPENSAITIS-LOGO" class="img-fluid logo-font"
                 src="{{ asset('images/logoss.png') }}" alt="SISPENSAITIS LOGO" style="max-height: 60px"
                 draggable="false"  />
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item ms-3">
-                    <a class="btn btn-dark btn-rounded" href="#!">Sign in</a>
+                    <a class="btn btn-dark btn-rounded" href="{{ route('essay.index') }}">Sign in</a>
                 </li>
             </ul>
         </div>
