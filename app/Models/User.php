@@ -42,4 +42,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function isAdmin()
+    {
+        return $this->role()->where('name', 'admin')->exists();
+    }
+    public function isTeacher()
+    {
+        return $this->role()->where('name', 'teacher')->exists();
+    }
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+    public function student()
+    {
+        return $this->hasOne(PesertaDidik::class);
+    }
 }
