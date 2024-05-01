@@ -43,7 +43,7 @@
                         <button type="button" id="tambah-soal" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700 focus:outline-none focus:bg-green-700">Tambah Soal</button>
 
                         @php
-                            $kelas = \App\Models\Kelas::find($tes->kelas_id)->first();
+                            $kelas = \App\Models\Kelas::find($tes->kelas_id);
                         @endphp
                           <!-- Input untuk Kunci Jawaban -->
                         <input type="hidden" name="kelas_id" value="{{ $kelas->id }}">

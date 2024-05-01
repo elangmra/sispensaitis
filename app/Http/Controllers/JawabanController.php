@@ -8,6 +8,7 @@ use App\Models\PesertaDidik;
 use App\Models\Teacher;
 use App\Models\Tes;
 use App\Models\User;
+use App\Models\MataPelajaran;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,11 +53,12 @@ class JawabanController extends Controller
             $kunciJawabanDenganPertanyaan[$pertanyaan] = $kunciJawaban[$index];
         }
 
+
         foreach ($jawabanSiswa as $pertanyaan => $jawaban) {
             if (isset($kunciJawabanDenganPertanyaan[$pertanyaan])) {
                 $keyAnswer = $kunciJawabanDenganPertanyaan[$pertanyaan];
 
-                $response = $client->post('http://localhost:5000/score-essay', [
+                $response = $client->post('http://sispensaitis.my.id/flask-app/', [
                     'json' => [
                         'student_answer' => $jawaban,
                         'key_answer' => $keyAnswer
@@ -91,7 +93,9 @@ class JawabanController extends Controller
         $jawaban = Jawaban::where('tes_id',$id_tes)->where('peserta_didik_id',Auth::user()->student->id)->first();
 
 
-        return view('student.detail_tes',compact('tes','jawaban'));
+        $mapel = MataPelajaran::where('id',$tes->mata_pelajaran_id)->first();
+
+        return view('student.detail_tes',compact('tes','jawaban','mapel'));
     }
 
 }

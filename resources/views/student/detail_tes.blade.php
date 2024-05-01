@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ route('student.tes', $tes->id) }}" class="flex items-center mb-4 text-lg text-blue-500 hover:text-blue-700">
+        <a href="{{ route('student.tes', $mapel->id) }}" class="flex items-center mb-4 text-lg text-blue-500 hover:text-blue-700">
             <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
@@ -13,9 +13,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <table class="min-w-full divide-y divide-gray-200">
+            <div class="bg-white overflow-auto shadow-sm sm:rounded-lg">
+                <div class="table-responsive p-6 bg-white border-b border-gray-200">
+                    <table class="table min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
@@ -47,19 +47,19 @@
                             @endphp
                             @foreach($data_soal as $index => $soal)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 word-break text-sm text-gray-500">
                                         {{ $index + 1 }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 word-break text-sm text-gray-500">
                                         {{ $soal }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 word-break text-sm text-gray-500">
                                         {{ $jawabanSiswa[$soal] }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 word-break text-sm text-gray-500">
                                         {{ $kunciJawaban[$index]}}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <td class="px-6 py-4 word-break text-sm">
                                         {{ $skorSiswa[$soal]*100/count($data_soal)}}
                                     </td>
 

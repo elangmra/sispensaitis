@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,16 +53,19 @@ class TeacherController extends Controller
         $user->password = Hash::make('123456');
         $user->save();
 
-        // Simpan guru ke dalam database
-        Teacher::create([
+        $teacher = Teacher::create([
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'mata_pelajaran_id' => $request->mata_pelajaran,
             'no_telepon' => $request->no_telepon,
             'alamat' => $request->alamat,
             'user_id' => $user->id,
-
         ]);
+
+        // Sekarang Anda bisa menggunakan $teacher->id untuk mendapatkan ID baru
+        $mapel = MataPelajaran::where('id', $request->mata_pelajaran)->first();
+        $mapel->pengajar = $teacher->id;
+        $mapel->save();
 
         // Redirect ke halaman index guru atau ke halaman lain yang diinginkan
         return redirect()->route('admin.teacher.index')->with('success', 'Guru berhasil ditambahkan');
@@ -84,14 +88,19 @@ class TeacherController extends Controller
             'no_telepon' => 'required',
             'alamat' => 'required',
         ]);
-        $teacher->update([
-            'nama' => $request->nama,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'no_telepon' => $request->no_telepon,
-            'alamat' => $request->alamat,
-            'mata_pelajaran_id' => $request->mata_pelajaran,
 
-        ]);
+
+            $teacher->nama =  $request->nama;
+            $teacher->jenis_kelamin =  $request->jenis_kelamin;
+            $teacher->no_telepon =  $request->no_telepon;
+            $teacher->alamat =  $request->alamat;
+            $teacher->mata_pelajaran_id =  $request->mata_pelajaran;
+
+
+        // Sekarang Anda bisa menggunakan $teacher->id untuk mendapatkan ID baru
+        $mapel = MataPelajaran::where('id', $request->mata_pelajaran)->first();
+        $mapel->pengajar = $teacher->id;
+        $mapel->save();
 
 
         $user = User::where('id',$teacher->user_id)->first();

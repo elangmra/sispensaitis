@@ -100,11 +100,32 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+
+        @if (Auth::user()->role_id ==2)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('teacher.index')" :active="request()->routeIs('teacher.index')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('teacher.kelas.index')" :active="request()->routeIs('teacher.kelas.index')">
+                    {{ __('Kelas') }}
+                </x-responsive-nav-link>
+            </div>
+
+        @endif
+        @if (Auth::user()->role_id ==3)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('student.index')" :active="request()->routeIs('student.index')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('matapelajaran.index')" :active="request()->routeIs('matapelajaran.index')">
+                    {{ __('Mata Pelajaran') }}
+                </x-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

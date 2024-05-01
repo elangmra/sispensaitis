@@ -15,7 +15,7 @@ class EssayController extends Controller
     {
         $client = new Client();
 
-        $response = $client->post('http://localhost:5000/score-essay', [
+        $response = $client->post('http://sispensaitis.my.id/flask-app', [
             'json' => [
                 'student_answer' => $request->student_answer,
                 'key_answer' => $request->key_answer

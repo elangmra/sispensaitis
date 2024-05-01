@@ -64,11 +64,11 @@ class TesController extends Controller
     public function update(Request $request, Tes $tes)
     {
 
+
         // Validasi data dari formulir
         $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'durasi' => 'required|date_format:H:i',
             'soal.*' => 'required|string', // Validasi untuk setiap input soal
             'kunci_jawaban.*' => 'required|string', // Validasi untuk setiap input kunci jawaban
         ]);

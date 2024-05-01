@@ -39,14 +39,13 @@ class MatapelajaranController extends Controller
     }
 
     public function store(Request $request){
+
         $request->validate([
-            'pengajar' => 'required',
             'nama_mapel' => 'required',
             'kode_pelajaran' => 'required'
         ]);
 
         MataPelajaran::create([
-            'pengajar' => $request->pengajar,
             'nama_pelajaran' => $request->nama_mapel,
             'kode_pelajaran' => $request->kode_pelajaran
         ]);
@@ -87,12 +86,10 @@ class MatapelajaranController extends Controller
     {
         $mapel = MataPelajaran::find($id);
         $request->validate([
-            'pengajar' => 'required',
             'nama_mapel' => 'required',
             'kode_pelajaran' => 'required'
         ]);
         $mapel->update([
-            'pengajar' => $request->pengajar,
             'nama_pelajaran' => $request->nama_mapel,
             'kode_pelajaran' => $request->kode_pelajaran
         ]);

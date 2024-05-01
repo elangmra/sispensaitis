@@ -41,18 +41,10 @@
                         <input type="text" name="kode_pelajaran" id="kode_pelajaran" class="mt-1 p-2 border rounded-md w-full">
                     </div>
 
-                    <div class="mb-4">
-                        <label for="pengajar" class="block text-sm font-medium text-gray-700">Pengajar</label>
-                        <select name="pengajar" id="pengajar" class="mt-1 p-2 border rounded-md w-full">
-                            @foreach(\App\Models\Teacher::all() as $teacher)
-                                <option value="{{ $teacher->id }}">{{ $teacher->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
 
                     <!-- ... (Tambahkan input dan field form yang diperlukan) ... -->
-                    <button type="submit" class="bg-primary text-white px-4 py-2 rounded-md">Simpan Guru</button>
+                    <button type="submit" class="bg-primary text-white px-4 py-2 rounded-md">Simpan</button>
                 </form>
             </div>
         </div>
